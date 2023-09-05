@@ -61,6 +61,7 @@ const createAppConfig = (bridgeConfig, chainConfig, tokenConfig) => {
           )?.address,
           tokens: tokens,
           rpcUrl: chain.rpc,
+          unmarshallName: chain.unmarshallName,
         };
       }),
     },

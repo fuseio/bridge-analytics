@@ -13,4 +13,14 @@ const getERC20Balance = async (contractAddress, address, rpcUrl, decimals) => {
   return ethers.formatUnits(balance, decimals);
 };
 
-module.exports = { getERC20Balance };
+const getERC20TotalSupply = async (contractAddress, rpcUrl, decimals) => {
+  const contract = getERC20ContractWithoutSigner(contractAddress, rpcUrl);
+  const totalSupply = await contract.totalSupply();
+  return ethers.formatUnits(totalSupply, decimals);
+};
+
+module.exports = {
+  getERC20Balance,
+  getERC20TotalSupply,
+  getERC20ContractWithoutSigner,
+};

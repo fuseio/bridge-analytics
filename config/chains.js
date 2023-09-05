@@ -2,26 +2,30 @@ const chains = [
   {
     chainName: "Polygon",
     lzChainId: 109,
-    rpc: "https://rpc-mainnet.maticvigil.com",
+    rpc: "https://polygon-mainnet.g.alchemy.com/v2/demo",
     chainId: 137,
+    unmarshallName: "matic",
   },
   {
     chainName: "Gnosis",
     lzChainId: 145,
     rpc: "https://rpc.gnosischain.com/",
     chainId: 100,
+    unmarshallName: "",
   },
   {
     chainName: "Arbitrum",
     lzChainId: 110,
     chainId: 42161,
-    rpc: "https://arb1.arbitrum.io/rpc",
+    rpc: "https://rpc.arb1.arbitrum.gateway.fm",
+    unmarshallName: "arbitrum",
   },
   {
     chainName: "Optimism",
     lzChainId: 111,
-    rpc: "https://mainnet.optimism.io",
+    rpc: "https://opt-mainnet.g.alchemy.com/v2/demo",
     chainId: 10,
+    unmarshallName: "optimism",
   },
 ];
 

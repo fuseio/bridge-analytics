@@ -114,7 +114,7 @@ const bridgeConfig = {
         name: "FUSE",
         isBridged: false,
         isNative: true,
-        address: "",
+        address: "0x0BE9e53fd7EDaC9F859882AfdDa116645287C629",
       },
       {
         chainId: 109,
