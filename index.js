@@ -43,7 +43,7 @@ const getBridgeLiquidity = (date) => {
               token: token.symbol,
               source_chain: "Fuse",
               dest_chain: chain.name,
-              liquidity: res,
+              liquidity: parseFloat(res),
               date: date,
             },
           ],
@@ -318,7 +318,7 @@ async function main() {
     year: new Date().getFullYear(),
   });
   getBridgeLiquidity(date);
-  //getNumberOfTransactionsPerBridge();
+  getNumberOfTransactionsPerBridge();
 }
 
 main();
