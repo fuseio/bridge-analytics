@@ -6,18 +6,18 @@ const chains = [
     chainId: 137,
     unmarshallName: "matic",
   },
-  // {
-  //   chainName: "Gnosis",
-  //   lzChainId: 145,
-  //   rpc: "https://rpc.gnosischain.com/",
-  //   chainId: 100,
-  //   unmarshallName: "",
-  // },
+  {
+    chainName: "Gnosis",
+    lzChainId: 145,
+    rpc: "https://rpc.gnosischain.com/",
+    chainId: 100,
+    unmarshallName: "",
+  },
   {
     chainName: "Arbitrum",
     lzChainId: 110,
     chainId: 42161,
-    rpc: "https://rpc.arb1.arbitrum.gateway.fm",
+    rpc: "https://endpoints.omniatech.io/v1/arbitrum/one/public",
     unmarshallName: "arbitrum",
   },
   {
