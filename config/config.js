@@ -41,6 +41,7 @@ const createAppConfig = (bridgeConfig, chainConfig, tokenConfig) => {
                 icon: coin.icon,
                 isNative: token.isNative,
                 isBridged: token.isBridged,
+                coinGeckoId: coin.coinGeckoId,
               });
             }
           });
@@ -61,6 +62,7 @@ const createAppConfig = (bridgeConfig, chainConfig, tokenConfig) => {
           )?.address,
           tokens: tokens,
           rpcUrl: chain.rpc,
+          unmarshallName: chain.unmarshallName,
         };
       }),
     },
