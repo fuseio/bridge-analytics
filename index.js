@@ -13,6 +13,7 @@ const {
   BigQueryDatetime,
 } = require("@google-cloud/bigquery");
 const { getWETHContractWithoutSigner } = require("./helpers/weth");
+const { fetchTokenPrice } = require("./helpers/api");
 const bigquery = new BigQuery({
   projectId: "fuse-etl-372416",
 });
@@ -24,7 +25,7 @@ async function insertRowsAsStream(
 ) {
   //console.log(rows);
   await bigquery.dataset(datasetId).table(tableId).insert(rows);
-  // console.log(`Inserted ${rows.length} rows`);
+  console.log(`Inserted ${rows.length} rows`);
 }
 
 const getBridgeLiquidity = (date) => {
@@ -79,6 +80,7 @@ const getNumberOfTransactionsPerBridge = () => {
   appConfig.wrappedBridge.chains.forEach(async (chain) => {
     chain.tokens.forEach(async (token) => {
       try {
+        const price = await fetchTokenPrice(token.coinGeckoId);
         if (token.isNative && token.isBridged) {
           const originalContract = getWETHContractWithoutSigner(
             "0x0BE9e53fd7EDaC9F859882AfdDa116645287C629",
@@ -126,6 +128,8 @@ const getNumberOfTransactionsPerBridge = () => {
                     block: log.blockNumber,
                     token: token.symbol,
                     value: formatUnits(BigInt(log.data, 16), token.decimals),
+                    valueUSD:
+                      formatUnits(BigInt(log.data, 16), token.decimals) * price,
                   },
                 ],
                 "fuse_bridge_analytics",
@@ -165,6 +169,8 @@ const getNumberOfTransactionsPerBridge = () => {
                     block: log.blockNumber,
                     token: token.symbol,
                     value: formatUnits(BigInt(log.data), token.decimals),
+                    valueUSD:
+                      formatUnits(BigInt(log.data, 16), token.decimals) * price,
                   },
                 ],
                 "fuse_bridge_analytics",
@@ -234,6 +240,8 @@ const getNumberOfTransactionsPerBridge = () => {
                     block: log.blockNumber,
                     token: token.symbol,
                     value: formatUnits(BigInt(log.data, 16), token.decimals),
+                    valueUSD:
+                      formatUnits(BigInt(log.data, 16), token.decimals) * price,
                   },
                 ],
                 "fuse_bridge_analytics",
@@ -273,6 +281,8 @@ const getNumberOfTransactionsPerBridge = () => {
                     block: log.blockNumber,
                     token: token.symbol,
                     value: formatUnits(BigInt(log.data), token.decimals),
+                    valueUSD:
+                      formatUnits(BigInt(log.data, 16), token.decimals) * price,
                   },
                 ],
                 "fuse_bridge_analytics",
@@ -308,7 +318,7 @@ async function main() {
     year: new Date().getFullYear(),
   });
   getBridgeLiquidity(date);
-  getNumberOfTransactionsPerBridge();
+  //getNumberOfTransactionsPerBridge();
 }
 
 main();

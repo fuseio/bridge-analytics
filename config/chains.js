@@ -6,13 +6,13 @@ const chains = [
     chainId: 137,
     unmarshallName: "matic",
   },
-  {
-    chainName: "Gnosis",
-    lzChainId: 145,
-    rpc: "https://rpc.gnosischain.com/",
-    chainId: 100,
-    unmarshallName: "",
-  },
+  // {
+  //   chainName: "Gnosis",
+  //   lzChainId: 145,
+  //   rpc: "https://rpc.gnosischain.com/",
+  //   chainId: 100,
+  //   unmarshallName: "",
+  // },
   {
     chainName: "Arbitrum",
     lzChainId: 110,

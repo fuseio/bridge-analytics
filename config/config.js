@@ -41,6 +41,7 @@ const createAppConfig = (bridgeConfig, chainConfig, tokenConfig) => {
                 icon: coin.icon,
                 isNative: token.isNative,
                 isBridged: token.isBridged,
+                coinGeckoId: coin.coinGeckoId,
               });
             }
           });
